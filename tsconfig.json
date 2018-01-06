@@ -1,0 +1,23 @@
+{
+    "compilerOptions": {
+        "target": "es5",
+        "module": "commonjs",
+        "moduleResolution": "node",
+        "sourceMap": true,
+        "declaration": true,
+        "declarationDir": "lib",
+        "outDir": "lib",
+        "rootDir": "src",
+        "removeComments": true,
+        "lib": [ "es2016" ],
+        "strict": true,
+        "allowSyntheticDefaultImports": true,
+        "typeRoots": [
+            "node_modules/@types/"
+        ]
+    },
+    "exclude": [
+        "lib",
+        "test"
+    ]
+}

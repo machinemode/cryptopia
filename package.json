@@ -1,0 +1,33 @@
+{
+  "name": "@machinemode/cryptopia",
+  "version": "0.1.0",
+  "description": "Node wrapper for Cryptopia's CLient API",
+  "main": "./lib/CryptopiaClient.js",
+  "types": "./lib/CryptopiaClient.d.ts",
+  "scripts": {
+    "build": "npm run lint && tsc",
+    "lint": "tslint \"src/**/*.ts\" -c tslint.json",
+    "start": "npm run build && node lib/CryptopiaClient.js",
+    "test": "tsc -p test/ts && mocha --recursive"
+  },
+  "devDependencies": {
+    "@types/chai": "^4.1.0",
+    "@types/mocha": "^2.2.45",
+    "@types/node": "^8.5.5",
+    "chai": "^4.1.2",
+    "dotenv": " ^4.0.0",
+    "mocha": "^4.1.0",
+    "tslint": "^5.8.0",
+    "typescript": "^2.6.2"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/machinemode/cryptopia.git"
+  },
+  "author": "",
+  "license": "MIT",
+  "bugs": {
+    "url": "https://github.com/machinemode/cryptopia/issues"
+  },
+  "homepage": "https://github.com/machinemode/cryptopia#readme"
+}
