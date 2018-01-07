@@ -1,21 +1,14 @@
 import Response from './Response';
 
 class ApiResponse extends Response {
-    private Success: boolean;
-    private Message: string;
+    private Success: boolean = false;
+    private Message: string = '';
     private Data: any;
-    private Error: string;
+    private Error: string = '';
 
     constructor(statusCode: number, responseBody: string) {
         super(statusCode, responseBody);
-
-        if (this.ok) {
-            let response = JSON.parse(this.body);
-            this.Success = response.Success;
-            this.Message = response.Message;
-            this.Data = response.Data;
-            this.Error = response.Error;
-        }
+        this.init(responseBody);
     }
 
     get success(): boolean {
@@ -32,6 +25,23 @@ class ApiResponse extends Response {
 
     get error(): string {
         return this.Error;
+    }
+
+    private init(responseBody: string) {
+        let response: any;
+
+        try {
+            response = JSON.parse(this.body);
+        } catch (error) {
+            this.Message = `Server responded with ${response.status}\n${response.body.toString()}`;
+        }
+
+        if (this.ok && response) {
+            this.Success = response.Success;
+            this.Message = response.Message;
+            this.Data = response.Data;
+            this.Error = response.Error;
+        }
     }
 }
 

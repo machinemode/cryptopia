@@ -67,8 +67,16 @@ class MarketService {
             });
     }
 
-    getMarket(market: Market, hours?: number): Promise<Market> {
-        let path = `/api/GetMarket/${market.tradePairId}`;
+    getMarket(market: Market | string, hours?: number): Promise<Market> {
+        let path = `/api/GetMarket`;
+
+        if (market instanceof Market) {
+            path += `/${market.tradePairId}`;
+        } else if (typeof market === 'string') {
+            path += `/${market.replace('/', '_')}`;
+        } else {
+            path += `/${market}`;
+        }
 
         if (hours) {
             path += `/${hours}`;

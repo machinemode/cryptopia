@@ -45,6 +45,22 @@ describe('MarketService', () => {
     });
 
     describe('getMarket()', () => {
+        it('should return market data for the specified market name', () => {
+            return service.getMarket('LTC/BTC').then((market) => {
+                expect(market).to.be.an.instanceof(Market);
+                expect(market.tradePairId).to.equal(ltcBtcMarket.tradePairId);
+                expect(market.label).to.equal('LTC/BTC');
+            });
+        });
+
+        it('should return market data for the specified trade pair id', () => {
+            return service.getMarket(101).then((market) => {
+                expect(market).to.be.an.instanceof(Market);
+                expect(market.tradePairId).to.equal(ltcBtcMarket.tradePairId);
+                expect(market.label).to.equal('LTC/BTC');
+            });
+        });
+
         it('should return market data for the specified market', () => {
             return service.getMarket(ltcBtcMarket).then((market) => {
                 expect(market).to.be.an.instanceof(Market);

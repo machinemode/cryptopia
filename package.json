@@ -2,6 +2,9 @@
   "name": "@machinemode/cryptopia",
   "version": "0.1.0",
   "description": "Node wrapper for Cryptopia's CLient API",
+  "keywords": [
+    "cryptopia"
+  ],
   "main": "./lib/CryptopiaClient.js",
   "types": "./lib/CryptopiaClient.d.ts",
   "scripts": {
