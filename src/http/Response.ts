@@ -3,10 +3,10 @@ const BIG_ENDIAN_BYTE_ORDER_MARK = 65279;
 const HTTP_2XX_MIN = 200;
 const HTTP_2XX_MAX = 299;
 
-class Response {
+abstract class Response {
 
     constructor(private statusCode: number, private responseBody: string) {
-        if (responseBody.charCodeAt(0) === BIG_ENDIAN_BYTE_ORDER_MARK) {
+        if (responseBody && responseBody.charCodeAt(0) === BIG_ENDIAN_BYTE_ORDER_MARK) {
             this.responseBody = responseBody.substring(1);
         } else {
             this.responseBody = responseBody;

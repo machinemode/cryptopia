@@ -33,7 +33,7 @@ class ApiResponse extends Response {
         try {
             response = JSON.parse(this.body);
         } catch (error) {
-            this.Message = `Server responded with ${response.status}\n${response.body.toString()}`;
+            this.Message = `Could not parse response\n`;
         }
 
         if (this.ok && response) {
@@ -41,6 +41,9 @@ class ApiResponse extends Response {
             this.Message = response.Message;
             this.Data = response.Data;
             this.Error = response.Error;
+        } else {
+            let rawBody = this.body ? this.body.toString() : '';
+            this.Message += `Server responded with ${this.status}: ${rawBody}`;
         }
     }
 }
